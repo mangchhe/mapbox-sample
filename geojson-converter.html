@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web application using Mapbox</title>
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">Geojson Converter</h1>
+    </header>
+
+    <main>
+        <div id='map' style='width: 1200px; height: 900px; margin: 0 auto;'></div>
+    </main>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+
+    <script>
+        mapboxgl.accessToken = '<access token>';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: "[lon, lat]",
+            zoom: 15.3
+        });
+        map.on('load', () => {
+            map.addSource('route', {
+            'type': 'geojson',
+            'data': "<geojson data>"
+            });
+            map.addLayer({
+                'id': 'route',
+                'type': 'line',
+                'source': 'route',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': '#777',
+                    'line-width': 3
+                },
+            });
+            map.addLayer({
+                'id': 'point',
+                'source': 'route',
+                'type': 'circle',
+                'paint': {
+                    'circle-radius': 6,
+                    'circle-color': '#777777'
+                },
+                'filter': ['==', '$type', 'Point']
+            })
+            
+            map.addLayer({
+                'id': 'text',
+                'source': 'route',
+                'type': 'symbol',
+                'layout': {
+                    'text-allow-overlap': true,
+                    'text-field' : ['get', 'nickname'],
+                    'text-size' : 11,
+                    'text-offset' : [0, -1.3],
+                    'text-line-height' : 5
+                },
+                'filter': ['==', '$type', 'Point']
+            })
+        });
+    </script>
+</body>
+</html>
