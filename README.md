@@ -17,6 +17,17 @@
 }
 ```
 
+# 사전 지식
+
+- 위도 : 지구상에서 적도(지구를 반으로 가르는 선)를 기준으로 북쪽과 남쪽으로 얼마나 떨어져 있는지 나타내는 위치. 0° ~ 90°
+  - 적도 : 지구를 반으로 가르는 선. 0°
+  - 북위 : 북쪽으로 올라갔을 때 표현식
+  - 남위 : 남쪽으로 올라갔을 때 표현식
+- 경도 : 지구상에서 본초 자오선을 기준으로 동쪽과 서쪽으로 얼마나 떨어져 있는지 나타내는 위치. 0° ~ 180°
+  - 본초 자오선 : 영국 그리니치의 그리니치 천문대를 지나는 자오선. 0°
+  - 서경 : 서쪽으로 갔을 때 표현식
+  - 동경 : 동쪽으로 갔을 때 표현식
+
 # GeoJSON Data Type
 
 - `Feature`, `FeatureCollection`
@@ -87,3 +98,6 @@
 # Reference
 
 - https://ko.wikipedia.org/wiki/GeoJSON
+- https://ko.wikipedia.org/wiki/%EC%9C%84%EB%8F%84
+- https://ko.wikipedia.org/wiki/%EA%B2%BD%EB%8F%84
+- https://ko.wikipedia.org/wiki/%EB%B3%B8%EC%B4%88_%EC%9E%90%EC%98%A4%EC%84%A0
